@@ -99,6 +99,7 @@ app.get("/product/:name", async (req, res) => {
     console.log(product);
     res.status(200).json({
       status: "success",
+      result: products.length,
       data: {
         product,
       },

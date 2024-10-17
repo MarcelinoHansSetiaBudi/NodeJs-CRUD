@@ -2,6 +2,10 @@ const express = require("express");
 const Product = require("./models/ProductModel");
 const app = express();
 
+// see request in prompt
+const morgan = require("morgan");
+// app.use(morgan("dev"));
+
 // connection mongodb
 const mongoose = require("mongoose");
 mongoose
@@ -79,7 +83,7 @@ app.get("/product/get", async (req, res) => {
       status: "success",
       result: products.length,
       data: {
-        product,
+        products,
       },
     });
   } catch (error) {
@@ -99,7 +103,7 @@ app.get("/product/:name", async (req, res) => {
     console.log(product);
     res.status(200).json({
       status: "success",
-      result: products.length,
+      result: product.length,
       data: {
         product,
       },
